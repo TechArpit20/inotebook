@@ -1,10 +1,12 @@
-const connectDB=require('./db')
+const conn=require('./db')
 const express = require('express')
 const app = express()
 const port = 3000
 
+conn();
 
-connectDB();
+app.use(express.json()); // If we want to use the middleware, then we have to use this middleware to get the json format from the body
+
 
 app.get('/', (req, res) => {
   res.send('Hello Arpit There!')
